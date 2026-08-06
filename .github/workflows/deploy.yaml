@@ -29,8 +29,6 @@ jobs:
           source: '.'
           target: '~/app'
           rm: true
-          strip_components: 1
-          tar_exec: 'tar'
           overwrite: true
 
 
