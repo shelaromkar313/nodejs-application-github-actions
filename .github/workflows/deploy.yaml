@@ -25,13 +25,14 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          port: ${{ secrets.EC2_SSH_PORT || 22 }}
+          port: 22
           source: '.'
           target: '~/app'
-          exclude: |
-            node_modules
-            .git
-            .github
+          rm: true
+          strip_components: 1
+          tar_exec: 'tar'
+          overwrite: true
+
 
       - name: Deploy on EC2
         uses: appleboy/ssh-action@v0.1.8
@@ -39,7 +40,7 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          port: ${{ secrets.EC2_SSH_PORT || 22 }}
+          port: ${{ secrets.EC2_SSH_PORT }}
           script: |
             mkdir -p ~/app
             cd ~/app
