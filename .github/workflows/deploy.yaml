@@ -42,6 +42,7 @@ jobs:
           script: |
             mkdir -p ~/app
             cd ~/app
-            docker compose down || true
+            docker rm -f $(docker ps -aq) || true
             sudo fuser -k 8080/tcp || true
+            docker compose down || true
             docker compose up -d --build
