@@ -20,7 +20,7 @@ jobs:
           node-version: 22
 
       - name: Sync application files to EC2
-        uses: appleboy/scp-action@v0.1.8
+        uses: appleboy/scp-action@v1
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
@@ -35,7 +35,7 @@ jobs:
 
 
       - name: Deploy on EC2
-        uses: appleboy/ssh-action@v0.1.8
+        uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
