@@ -43,4 +43,5 @@ jobs:
             mkdir -p ~/app
             cd ~/app
             docker compose down || true
+            sudo fuser -k 8080/tcp || true
             docker compose up -d --build
